@@ -1,0 +1,155 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* Navbar */
+.selfie-navbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #b57edc;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.logo img {
+  height: 35px;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #003b5c;
+  margin-left: 10px;
+}
+
+/* Page container */
+.selfie-page .selfie-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 60px;
+}
+
+/* Title & subtitle */
+.title {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #003b5c;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+.selfie-container {
+  background-color: #ffffff;
+}
+/* Main section layout */
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Instruction icons */
+.side-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.instruction {
+  font-size: 16px;
+  color: #003b5c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instruction img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+/* Webcam capture */
+.webcam-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.webcam,
+.captured-image {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.webcam {
+  transform: scaleX(-1); /* 🪞 Mirror video horizontally */
+}
+
+/* Buttons */
+.click-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1f6a94;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.action-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1f6a94;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+  background-color: #124c6c;
+}
+
+.click-btn:hover {
+  background-color: #124c6c;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}

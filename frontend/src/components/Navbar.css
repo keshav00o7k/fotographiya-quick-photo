@@ -1,0 +1,281 @@
+/* ================= NAVBAR BASE ================= */
+.navbar-foto {
+  height: 64px;
+  background: #6d28d9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: relative;
+  z-index: 100;
+  overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ================= LEFT (LOGO) ================= */
+.navbar-left-foto {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.logo-foto {
+  height: 28px;
+  width: auto;
+}
+
+/* ================= RIGHT ================= */
+.navbar-right-foto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: visible;
+}
+
+/* ================= USER PROFILE ================= */
+.user-profile-foto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: visible;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+}
+
+.user-profile-foto:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* PROFILE IMAGE */
+.profile-img-foto {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= NAV LINKS ================= */
+.nav-links-foto {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.dropdown-foto {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-weight: 600;
+  min-width: 0;
+  position: relative;
+}
+
+/* FORCE NAME TO SHOW - FIXED & ENLARGED */
+.dropdown-name-foto {
+  display: inline-block;
+  max-width: none;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ARROW */
+.dropdown-arrow-foto {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.rotate-arrow,
+.user-profile-foto:hover .dropdown-arrow-foto {
+  transform: rotate(180deg);
+}
+
+/* ================= DROPDOWN MENU ================= */
+.dropdown-menu-foto {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  border-radius: 14px;
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  min-width: 240px;
+  padding: 8px;
+  list-style: none;
+  z-index: 10000;
+  animation: dropdownSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.open-foto,
+.user-profile-foto:hover .dropdown-menu-foto {
+  display: block;
+}
+
+.dropdown-item-foto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  color: #1e293b;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.dropdown-item-foto .menu-icon {
+  color: #64748b;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.dropdown-item-foto:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.dropdown-item-foto:hover .menu-icon {
+  color: #6d28d9;
+  transform: scale(1.08);
+}
+
+.item-main-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.sub-arrow-icon {
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+.open-sub-arrow {
+  transform: rotate(90deg);
+  color: #6d28d9;
+}
+
+/* DIVIDER */
+.dropdown-divider-foto {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 6px 4px;
+}
+
+/* LOGOUT ITEM */
+.logout-item-foto {
+  color: #dc2626;
+}
+
+.logout-item-foto .logout-icon {
+  color: #ef4444;
+}
+
+.logout-item-foto:hover {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.logout-item-foto:hover .logout-icon {
+  color: #b91c1c;
+}
+
+/* SUB DROPDOWN */
+.sub-dropdown-foto {
+  display: none;
+  position: absolute;
+  left: calc(100% + 8px);
+  top: -8px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  min-width: 180px;
+  padding: 6px;
+  list-style: none;
+  animation: dropdownSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.open-sub-foto,
+.has-sub:hover .sub-dropdown-foto {
+  display: block;
+}
+
+.has-sub:hover .sub-arrow-icon {
+  transform: rotate(90deg);
+  color: #6d28d9;
+}
+
+.sub-dropdown-item-foto {
+  padding: 9px 12px;
+  color: #334155;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.sub-dropdown-item-foto:hover {
+  background: #f1f5f9;
+  color: #6d28d9;
+}
+
+/* ================= MOBILE EXTRA SAFETY ================= */
+@media (max-width: 400px) {
+  .dropdown-name-foto {
+    font-size: 12px;
+  }
+
+  .logo-foto {
+    height: 24px;
+  }
+
+  .profile-img-foto {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .dropdown-menu-foto {
+    min-width: 200px;
+    right: -10px;
+  }
+}

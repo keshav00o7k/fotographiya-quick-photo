@@ -1,0 +1,59 @@
+.sidebar {
+  width: 270px !important;
+  height: calc(100vh - 62px);
+  overflow-y: auto;
+  padding-top: 20px;
+}
+
+.sidebar ul {
+  padding-left: 0;
+}
+
+.PRofile-heading h6 {
+  color: #3e6688;
+  font-size: 1.6rem;
+}
+
+.sidebar ul li:first-child {
+  padding-right: 0;
+  padding-left: 2rem;
+}
+
+.sidebar ul li {
+  line-height: 40px;
+  padding: 5px 2rem 5px 0;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* ✅ Flex container for text + icon */
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: #2887af !important;
+}
+
+/* 🔵 Hover effect */
+.PRofile-item:hover .item-content {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 2px #13252d26;
+  cursor: pointer;
+}
+
+/* 🟢 Active item */
+.PRofile-item.active .item-content {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 2px #13252d26;
+}

@@ -1,0 +1,116 @@
+/* ================= GLOBAL RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #111;
+}
+
+/* ================= UTILITIES ================= */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.text-center {
+  text-align: left !important;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient {
+  background: linear-gradient(to right, #2484c6, #2f5c96);
+  color: white;
+  border: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #296fa8;
+  border: 1px solid #296fa8;
+}
+
+/* ================= REUSABLE ELEMENTS ================= */
+.highlight-line {
+  width: 60px;
+  height: 4px;
+  background-color: #f4c900;
+  border-radius: 2px;
+  margin: 20px auto;
+}
+
+.dropdown-arrow {
+  margin-left: 1px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  transform: rotate(180deg); 
+  opacity: 0.6;
+}
+
+.dropdown:hover .dropdown-arrow {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+/* ================= HEADINGS ================= */
+.heading-sm {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #3E5688;
+}
+
+.heading-lg {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+}
+
+/* ================= GRID ================= */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .heading-lg {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

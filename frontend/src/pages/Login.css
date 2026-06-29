@@ -1,0 +1,228 @@
+/* ===== GLOBAL THEME & FLUID RESPONSIVE CSS ===== */
+:root {
+  --lv-bg: #f8f9ff;
+  --lv-primary: #7c3aed;
+  --lv-secondary: #a78bfa;
+  --lv-light: #ede9fe;
+  --lv-lighter: #f5f3ff;
+  --lv-dark: #6d28d9;
+  --lv-text: #3730a3;
+  --lv-muted: #a5b4fc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--lv-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- MAIN LAYOUT --- */
+.login-page .login-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--lv-bg);
+}
+
+/* --- DESKTOP LEFT SIDE (DESKTOP ONLY) --- */
+.a12 {
+  width: 60%;
+  display: block;
+}
+
+.form-img {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.form-img img.c {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-wrapper {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  z-index: 10;
+}
+
+.logo-wrapper img {
+  width: 240px; /* Large Desktop Size */
+  height: auto;
+}
+
+.overlaytext {
+  position: absolute;
+  left: 20px;
+  bottom: 80px;
+  width: 540px;
+  background: rgba(124, 58, 237, 0.15);
+  padding: 1.5rem;
+  backdrop-filter: blur(14px);
+  color: white;
+  border-radius: 12px;
+}
+
+.overlaytext h4 { font-size: 1.5rem; margin-top: 10px; }
+
+/* --- RIGHT SIDE / FORM CONTAINER --- */
+.b12 {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hidden by default on Desktop */
+.mobile-only-logo { 
+  display: none; 
+} 
+
+.loginfrom-top h2 {
+  background: linear-gradient(135deg, var(--lv-primary), var(--lv-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.loginfrom-top span {
+  color: var(--lv-text);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 25px;
+}
+
+/* --- INPUTS & BUTTONS --- */
+.input-control {
+  width: 100%;
+  height: 54px;
+  border: 2px solid var(--lv-secondary);
+  border-radius: 12px;
+  padding: 0 16px;
+  margin-top: 15px;
+  font-size: 1rem;
+  background: white;
+  color: var(--lv-text);
+  display: block;
+}
+
+.input-control:focus {
+  outline: none;
+  border-color: var(--lv-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+.login-btn {
+  width: 100%;
+  height: 54px;
+  margin-top: 30px;
+  background: linear-gradient(135deg, var(--lv-secondary), var(--lv-primary));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+}
+
+.footer-link { margin-top: 20px; font-weight: 500; }
+.footer-link a { color: var(--lv-primary); text-decoration: none; }
+.error-message { color: #ef4444; margin-top: 10px; font-weight: 500; }
+.success-message { color: #10b981; margin-top: 10px; font-weight: 500; }
+
+/* --- FLUID MOBILE RESPONSIVE (CRITICAL FIXES) --- */
+@media (max-width: 900px) {
+  .a12 { 
+    display: none !important; 
+  }
+
+  .b12 {
+    width: 100% !important;
+    min-height: 100vh;
+    padding: 60px 25px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--lv-bg);
+  }
+
+  /* Force display of mobile logo */
+  .mobile-only-logo {
+    display: flex !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 3.5rem;
+  }
+
+  .mobile-only-logo img {
+    /* Fluid Logic: Base 279px, scales up to 32% of screen width */
+    width: max(279px, 32vw); 
+    max-width: 85vw;
+    height: auto;
+    display: block !important;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .loginfrom-top { 
+    text-align: left; 
+    width: 100%; 
+  }
+
+  .input-control { 
+    height: 58px; 
+    font-size: 16px; 
+  }
+}
+
+/* Specific measurement fix for small screens */
+@media (max-width: 480px) {
+  .mobile-only-logo img { 
+    width: 279px !important; 
+  }
+  .b12 {
+    padding: 40px 20px;
+  }
+}
+
+/* Support for very short screens (Landscape) */
+@media (max-height: 750px) {
+  .b12 {
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .mobile-only-logo {
+    margin-bottom: 2rem;
+  }
+}
