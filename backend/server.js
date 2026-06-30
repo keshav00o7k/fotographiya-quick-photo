@@ -35,7 +35,7 @@ app.use("/api/facematch", faceMatchRoutes);
 app.use("/groups", express.static("Z:/quick_foto_Testing/groups"));
 app.use("/selfie", express.static("Z:/quick_foto_Testing/Selfie"));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8090;
 app.listen(PORT, () => {
   console.log(`🌐 Server running at: http://localhost:${PORT}`);
 });
