@@ -438,21 +438,25 @@ def get_image_from_url(url):
     except:
         return None
 
-def get_embeddings(image):
+def get_embeddings(image, max_faces=20):
     try:
         boxes, _ = mtcnn.detect(image)
         if boxes is None or len(boxes) == 0:
             return None
         
-        best_box_idx = 0
-        if len(boxes) > 1:
+        # Limit to max_faces to prevent infinite processing on huge crowd photos
+        if len(boxes) > max_faces:
             _, probs = mtcnn.detect(image)
-            best_box_idx = np.argmax(probs)
+            if probs is not None:
+                sorted_indices = np.argsort(probs)[::-1]
+                boxes = boxes[sorted_indices[:max_faces]]
+            else:
+                boxes = boxes[:max_faces]
             
-        boxes = boxes[best_box_idx:best_box_idx+1]
         embeddings = resnet(mtcnn.extract(image, boxes, save_path=None).to(device))
         return embeddings
-    except:
+    except Exception as e:
+        print(f"Error in get_embeddings: {e}")
         return None
 
 @app.route('/match-faces', methods=['POST'])
@@ -469,7 +473,7 @@ def match_faces():
     if selfie_img is None:
         return jsonify({"error": "Selfie failed"}), 400
 
-    selfie_embeddings = get_embeddings(selfie_img)
+    selfie_embeddings = get_embeddings(selfie_img, max_faces=1)
     if selfie_embeddings is None:
         return jsonify({"error": "No face in selfie"}), 400
 
@@ -484,11 +488,11 @@ def match_faces():
         if group_img is None:
             continue
             
-        group_embeddings = get_embeddings(group_img)
+        group_embeddings = get_embeddings(group_img, max_faces=20)
         if group_embeddings is not None:
             for group_embedding in group_embeddings.cpu():
                 distance = (selfie_embedding_ref - group_embedding).norm().item()
-                if distance < 0.85:
+                if distance < 0.90:  # 👈 Restored threshold to 0.90 for better recall
                     matched_photo_urls.append(photo_url)
                     break
         
@@ -502,3 +506,4 @@ def match_faces():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+
