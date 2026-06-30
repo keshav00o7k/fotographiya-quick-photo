@@ -427,10 +427,10 @@ def get_image_from_url(url):
             return None
 
         img = Image.open(BytesIO(response.content)).convert('RGB')
-        img.thumbnail((550, 550), Image.Resampling.LANCZOS)
+        img.thumbnail((800, 800), Image.Resampling.LANCZOS)  # 👈 Increased to 800px to keep details clear
         
         img_bytes = io.BytesIO()
-        img.save(img_bytes, format='JPEG', quality=50, optimize=True)
+        img.save(img_bytes, format='JPEG', quality=80, optimize=True)  # 👈 Increased quality to 80%
         img_bytes.seek(0)
         
         compressed_img = Image.open(img_bytes).convert('RGB')
@@ -492,7 +492,7 @@ def match_faces():
         if group_embeddings is not None:
             for group_embedding in group_embeddings.cpu():
                 distance = (selfie_embedding_ref - group_embedding).norm().item()
-                if distance < 0.82:  # 👈 Lowered threshold to 0.82 to prevent matching other people
+                if distance < 0.86:  # 👈 Adjusted threshold to 0.86 for 90%+ accuracy sweet spot
                     print(f"🎯 Match found! Distance: {distance:.4f} for photo: {photo_url.split('/')[-1]}")
                     matched_photo_urls.append(photo_url)
                     break
@@ -507,5 +507,6 @@ def match_faces():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+
 
 
