@@ -32,8 +32,8 @@ app.use("/api/groups", groupRoutes);
 app.use("/api/media", mediaRoutes);
 app.use("/api/facematch", faceMatchRoutes);
 // app.use("/uploads", express.static("Z:/quick_foto_Testing")); // static serve for image
-app.use("/groups", express.static("Z:/quick_foto_Testing/groups"));
-app.use("/selfie", express.static("Z:/quick_foto_Testing/Selfie"));
+app.use("/groups", express.static(process.env.UPLOAD_PATH || "Z:/quick_foto_Testing/groups"));
+app.use("/selfie", express.static(process.env.SELFIE_PATH || "Z:/quick_foto_Testing/Selfie"));
 
 const PORT = process.env.PORT || 8090;
 app.listen(PORT, () => {

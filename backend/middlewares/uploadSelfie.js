@@ -5,7 +5,7 @@ import path from "path";
 // Set up storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "Z:/quick_foto_Testing/Selfie");
+    cb(null, process.env.SELFIE_PATH || "Z:/quick_foto_Testing/Selfie");
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

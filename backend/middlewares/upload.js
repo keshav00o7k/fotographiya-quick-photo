@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
       // agar kisi purane group me folderName nahi hai (old data), fallback name slugify jaise
       const folderName = group.folderName || group._id.toString();
 
-      const baseDir = "Z:/quick_foto_Testing/groups";
+      const baseDir = process.env.UPLOAD_PATH || "Z:/quick_foto_Testing/groups";
       const dir = path.join(baseDir, folderName);
 
       if (!fs.existsSync(dir)) {
