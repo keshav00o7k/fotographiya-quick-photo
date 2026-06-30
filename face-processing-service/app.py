@@ -454,6 +454,10 @@ def get_embeddings(image, max_faces=20):
                 boxes = boxes[:max_faces]
             
         embeddings = resnet(mtcnn.extract(image, boxes, save_path=None).to(device))
+        
+        # 🔥 L2-NORMALIZE THE EMBEDDINGS (Mathematical Bug Fix)
+        embeddings = torch.nn.functional.normalize(embeddings, p=2, dim=-1)
+        
         return embeddings
     except Exception as e:
         print(f"Error in get_embeddings: {e}")
@@ -493,7 +497,7 @@ def match_faces():
         if group_embeddings is not None:
             for group_embedding in group_embeddings.cpu():
                 distance = (selfie_embedding_ref - group_embedding).norm().item()
-                if distance < 0.86:  # 👈 Adjusted threshold to 0.86 for 90%+ accuracy sweet spot
+                if distance < 0.84:  # 👈 Adjusted threshold to 0.84 (normalized distance sweet spot)
                     print(f"🎯 Match found! Distance: {distance:.4f} for photo: {photo_url.split('/')[-1]}")
                     matched_photo_urls.append(photo_url)
                     break
