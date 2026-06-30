@@ -396,6 +396,7 @@ import requests
 from io import BytesIO
 import io  # 🔥 FIXED: Missing import
 import torch
+import torch.nn.functional as F  # 👈 Explicitly import functional for normalization
 import numpy as np
 import time
 
@@ -456,7 +457,7 @@ def get_embeddings(image, max_faces=20):
         embeddings = resnet(mtcnn.extract(image, boxes, save_path=None).to(device))
         
         # 🔥 L2-NORMALIZE THE EMBEDDINGS (Mathematical Bug Fix)
-        embeddings = torch.nn.functional.normalize(embeddings, p=2, dim=-1)
+        embeddings = F.normalize(embeddings, p=2, dim=-1)
         
         return embeddings
     except Exception as e:
