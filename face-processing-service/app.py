@@ -492,7 +492,8 @@ def match_faces():
         if group_embeddings is not None:
             for group_embedding in group_embeddings.cpu():
                 distance = (selfie_embedding_ref - group_embedding).norm().item()
-                if distance < 0.90:  # 👈 Restored threshold to 0.90 for better recall
+                if distance < 0.82:  # 👈 Lowered threshold to 0.82 to prevent matching other people
+                    print(f"🎯 Match found! Distance: {distance:.4f} for photo: {photo_url.split('/')[-1]}")
                     matched_photo_urls.append(photo_url)
                     break
         
@@ -506,4 +507,5 @@ def match_faces():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+
 
