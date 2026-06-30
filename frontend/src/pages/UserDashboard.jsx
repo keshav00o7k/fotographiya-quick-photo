@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import JoinGroupModal from "../components/Dashboard/JoinGroupModal";
 import GroupCard from "../components/Dashboard/GroupCard";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL } from "../config";
 
 const UserDashboard = () => {
   const [groups, setGroups] = useState([]);
@@ -13,7 +14,7 @@ const UserDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/groups/joined", {
+    fetch(`${BACKEND_URL}/api/groups/joined`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

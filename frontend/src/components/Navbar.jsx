@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/axiosConfig";
+import { BACKEND_URL } from "../config";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -65,7 +66,7 @@ const Navbar = () => {
           }}
         >
           <img
-            src={`http://localhost:5000${selfie}`}
+            src={`${BACKEND_URL}${selfie}`}
             alt="Profile"
             className="profile-img-foto"
           />

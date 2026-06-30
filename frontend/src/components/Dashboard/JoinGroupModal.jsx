@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { BACKEND_URL } from "../../config";
+
 const JoinGroupModal = ({ showModal, onClose }) => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
 
@@ -20,7 +22,7 @@ const JoinGroupModal = ({ showModal, onClose }) => {
       return toast.error("Please enter a valid 6-digit code");
 
     try {
-      const res = await fetch("http://localhost:5000/api/groups/join", {
+      const res = await fetch(`${BACKEND_URL}/api/groups/join`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

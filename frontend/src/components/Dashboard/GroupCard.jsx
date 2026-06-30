@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../utils/axiosConfig";
+import { BACKEND_URL } from "../../config";
 
 const GroupCard = ({ group, onClick }) => {
   const [photoCount, setPhotoCount] = useState(0);
@@ -22,7 +23,7 @@ const GroupCard = ({ group, onClick }) => {
     if (group.thumbnail) {
       return group.thumbnail.startsWith("http") 
         ? group.thumbnail 
-        : `http://localhost:5000${group.thumbnail}`;
+        : `${BACKEND_URL}${group.thumbnail}`;
     }
     return "/images/group-icon.png";
   };

@@ -6,6 +6,7 @@ import CreateGroupModal from "../components/Dashboard/CreateGroupModal";
 import JoinGroupModal from "../components/Dashboard/JoinGroupModal";
 import GroupCard from "../components/Dashboard/GroupCard";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL } from "../config";
 
 const AdminDashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +19,7 @@ const AdminDashboard = () => {
     const fetchGroups = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/groups/all", {
+        const res = await fetch(`${BACKEND_URL}/api/groups/all`, {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Send token
           },

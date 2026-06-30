@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify"; // ✅ Toast import
 // import "./CreateGroupModal.css";
+import { BACKEND_URL } from "../../config";
+
 const CreateGroupModal = ({ showModal, onClose, onGroupCreated }) => {
   const [step, setStep] = useState(1);
   const [groupName, setGroupName] = useState("");
@@ -23,7 +25,7 @@ const CreateGroupModal = ({ showModal, onClose, onGroupCreated }) => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/groups/create", {
+      const res = await fetch(`${BACKEND_URL}/api/groups/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

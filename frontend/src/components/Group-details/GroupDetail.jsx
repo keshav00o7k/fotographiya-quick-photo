@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./GroupDetail.css";
 import { toast } from "react-toastify";
 import api from "../../utils/axiosConfig";
+import { BACKEND_URL } from "../../config";
 import Navbar from "../../components/Navbar";
 import GroupSettingModal from "./GroupSettingModal";
 
@@ -330,7 +331,7 @@ const GroupDetail = () => {
             logoImg.crossOrigin = "anonymous";
             const logoUrl = groupData.watermarkLogo.startsWith("http")
               ? groupData.watermarkLogo
-              : `http://localhost:5000${groupData.watermarkLogo}`;
+              : `${BACKEND_URL}${groupData.watermarkLogo}`;
             logoImg.onload = () => {
               const logoWidth = Math.max(100, Math.round(userSize * photoScale * 3.5));
               const logoHeight = (logoImg.height / logoImg.width) * logoWidth;

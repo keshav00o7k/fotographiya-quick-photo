@@ -5,6 +5,7 @@ import CreateGroupModal from "../components/Dashboard/CreateGroupModal";
 import JoinGroupModal from "../components/Dashboard/JoinGroupModal";
 import GroupCard from "../components/Dashboard/GroupCard";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL } from "../config";
 
 const Page2 = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +15,7 @@ const Page2 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/groups/all")
+    fetch(`${BACKEND_URL}/api/groups/all`)
       .then((res) => res.json())
       .then((data) => setGroups(data))
       .catch((err) => console.error(err));

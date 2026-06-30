@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import api from "../../utils/axiosConfig";
+import { BACKEND_URL } from "../../config";
 import "./GroupDetail.css";
 
 const GroupSettingModal = ({
@@ -53,7 +54,7 @@ const GroupSettingModal = ({
         setWatermarkLogoPreview(
           groupData.watermarkLogo.startsWith("http")
             ? groupData.watermarkLogo
-            : `http://localhost:5000${groupData.watermarkLogo}`
+            : `${BACKEND_URL}${groupData.watermarkLogo}`
         );
       }
     }
@@ -61,7 +62,7 @@ const GroupSettingModal = ({
       currentThumbnail
         ? currentThumbnail.startsWith("http")
           ? currentThumbnail
-          : `http://localhost:5000${currentThumbnail}`
+          : `${BACKEND_URL}${currentThumbnail}`
         : ""
     );
     setZoom(1);

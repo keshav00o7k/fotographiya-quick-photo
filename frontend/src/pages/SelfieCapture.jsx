@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SelfieCapture.css";
 import { toast } from "react-toastify";
+import { BACKEND_URL } from "../config";
+
 const SelfieCapture = () => {
   const webcamRef = useRef(null);
   const [imageSrc, setImageSrc] = useState(null);
@@ -54,7 +56,7 @@ const SelfieCapture = () => {
       formData.append("selfie", file); // 👈 "selfie" must match multer field
 
       const response = await fetch(
-        "http://localhost:5000/api/auth/upload-selfie",
+        `${BACKEND_URL}/api/auth/upload-selfie`,
         {
           method: "POST",
           headers: {
