@@ -484,6 +484,7 @@ def match_faces():
     start_time = time.time()
 
     for i, photo_url in enumerate(group_photo_urls, 1):
+        print(f"📥 Fetching photo {i}/{len(group_photo_urls)}: {photo_url}")
         group_img = get_image_from_url(photo_url)
         if group_img is None:
             continue
