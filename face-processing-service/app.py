@@ -497,9 +497,13 @@ def match_faces():
         group_embeddings = get_embeddings(group_img, max_faces=20)
         if group_embeddings is not None:
             for group_embedding in group_embeddings.cpu():
-                distance = (selfie_embedding_ref - group_embedding).norm().item()
-                if distance < 0.84:  # 👈 Adjusted threshold to 0.84 (normalized distance sweet spot)
-                    print(f"🎯 Match found! Distance: {distance:.4f} for photo: {photo_url.split('/')[-1]}")
+                # 📐 Calculate Cosine Similarity (Dot product / product of norms)
+                numerator = torch.dot(selfie_embedding_ref, group_embedding).item()
+                denominator = selfie_embedding_ref.norm().item() * group_embedding.norm().item()
+                similarity = numerator / denominator if denominator != 0 else 0
+                
+                if similarity > 0.75:  # 👈 Cosine Similarity Threshold set to 0.75
+                    print(f"🎯 Match found! Similarity: {similarity:.4f} for photo: {photo_url.split('/')[-1]}")
                     matched_photo_urls.append(photo_url)
                     break
         
